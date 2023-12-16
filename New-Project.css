@@ -10,13 +10,13 @@ html{
 }
 
 body{
-  font: bold;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-image: url(images/background-3.jpg);
   background-size: contain;
+  box-sizing: border-box;
+  font: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 input,button,select,textarea {
@@ -463,7 +463,7 @@ main{
   cursor: pointer;
 }
 
-.trending-button:hover{
+.trending-button:hover, .Payment-button:hover{
   background-color: #f59d7a;
   border: 2px solid #ffffff;
   box-shadow: 2px 2px 5px #000000;
@@ -583,15 +583,41 @@ main{
   margin-top: 50px;
 }
 
-.totals-calculaton{
-  height: 200px;
-  margin-bottom: 10px;
+.totals-calculation{
+  padding: 10px 0;
+  font-size: 2rem;;
+  height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-content:space-around; */
   background-color: #ffffff;
   border-radius: 5px;
   border: 2px solid #313131;
+}
+
+.calculation-info{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.totalCost{
+  font-size: 1rem;
+  font-weight: bolder;
+  margin: 0 0 10px 50px;
+  text-align: start;
+}
+
+.Payment-button{
+  background-color: #f38b22;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 2px 2px 5px #000000;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .js-cart-item-container{

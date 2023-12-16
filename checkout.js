@@ -1,4 +1,4 @@
-import { products, trendingProducts } from "../E-commerce-website/Product.js";
+import { products, trendingProducts, getProduct } from "../E-commerce-website/Product.js";
 import { cart, addToCart, removeFromCart, calculateCartQuantity, updateQuantity } from "../E-commerce-website/cart.js";
 
 
@@ -71,19 +71,8 @@ let checkoutItemsHTML ='';
 cart.forEach((cartItem)=>{
   const productId = cartItem.productId;
 
-  let matchingProduct;
+  const matchingProduct = getProduct(productId)
 
-  products.forEach((product)=>{
-    if (product.id === productId){
-      matchingProduct = product;
-    };
-  })
-
-  trendingProducts.forEach((product)=>{
-    if (product.id === productId){
-      matchingProduct = product;
-    };
-  })
   checkoutItemsHTML += `
     <div class="product-details product-details-${matchingProduct.id}">
         <img class="checkout-image" src="${matchingProduct.Image}"  alt="${matchingProduct.name}">
@@ -110,10 +99,12 @@ cart.forEach((cartItem)=>{
           const container = document.querySelector(`.product-details-${productId}`);
           container.remove();
           updateCartQuantity();
+          renderPaymentSummary();
         });
       });
 
       updateCartQuantity();
+      renderPaymentSummary();
 
       document.querySelectorAll('.JS-update')
       .forEach((link) =>{
@@ -140,5 +131,34 @@ cart.forEach((cartItem)=>{
       quantityLabel.innerHTML = newQuantity;
 
       updateCartQuantity();
+      renderPaymentSummary();
     });
   });
+
+
+ 
+  function renderPaymentSummary(){
+    let productPrice = 0;
+    cart.forEach((cartItem)=>{
+      const product = getProduct(cartItem.productId);
+      productPrice += product.price * cartItem.quantity;
+
+    })
+    const tax = productPrice * 0.1;
+    const total = tax + productPrice;
+
+    const paymentHTML = `
+    <div class="calculation-info">
+      <span class="totalCost">Items Cost</span>
+        <span class="totalCost">GHS ${productPrice}</span>
+        <span class="totalCost">Tax(10%)</span>
+        <span class="totalCost">GHS ${tax}</span>
+        <span class="totalCost">TOTAL</span>
+        <span class="totalCost">GHS ${total}</span>
+      </div>
+      <button class="Payment-button">Proceed To Payment</button>`;
+
+      document.querySelector('.JS-payment-summary').innerHTML = paymentHTML;
+  }
+
+  renderPaymentSummary();
