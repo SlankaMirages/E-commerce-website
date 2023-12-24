@@ -22,7 +22,7 @@ products.forEach((product) =>{
   `;
 })
 
-document.querySelector('.JS-page')
+document.querySelector('.JS-product-page')
 .innerHTML = productsHTML;
 
 let trendingProductsHTML ='';

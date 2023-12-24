@@ -149,13 +149,13 @@ cart.forEach((cartItem)=>{
 
     const paymentHTML = `
     <div class="calculation-info">
-      <span class="totalCost">Items Cost</span>
+        <span class="totalCost">Items Cost</span>
         <span class="totalCost">GHS ${productPrice}</span>
         <span class="totalCost">Tax(10%)</span>
         <span class="totalCost">GHS ${tax}</span>
-        <span class="totalCost">TOTAL</span>
-        <span class="totalCost">GHS ${total}</span>
-      </div>
+        <span class="totalCost total">TOTAL</span>
+        <span class="totalCost total">GHS ${total}</span>
+    </div>
       <button class="Payment-button">Proceed To Payment</button>`;
 
       document.querySelector('.JS-payment-summary').innerHTML = paymentHTML;
