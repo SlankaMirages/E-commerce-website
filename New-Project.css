@@ -599,6 +599,7 @@ main{
   grid-template-columns: 300px 100px;
   align-content:space-around;
   justify-content: center;
+  margin: 10px 0;
 }
 
 .totalCost{
